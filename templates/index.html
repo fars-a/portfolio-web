@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Web Developer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Farsan<span class="dot">.</span></div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a class="resume-btn" href="{{ resume_path }}" target="_blank" rel="noopener">Download Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero-left">
+        <div class="photo-polaroid">
+          <img src="{{ url_for('static', filename='media/profile.jpg') }}" alt="profile photo">
+          <div class="polaroid-decor"></div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+                <h1 class="display-name">Hi, I am</h1>
+        <h1 class="display-name">FARSAN SUNEER</h1>
+
+<p class="subtitle">And I'm a <span id="typing"></span></p>
+        <p class="bio">I craft modern, user-centered interfaces and lightweight backends. I focus on clear UX, maintainable code and delightful micro-interactions.</p>
+
+        <div class="hero-cta">
+          <a class="btn ghost" href="#contact">Hire me</a>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="sep">
+
+    <!-- ABOUT / EDUCATION / SKILLS -->
+<section id="about" class="about-full">
+  <h2 class="about-title">------------ ABOUT ------------</h2><br>
+  <p class="about-text">
+    I’m a goal-oriented tech enthusiast who loves transforming ideas into practical digital solutions. 
+    I constantly learn, improve, and push myself to do better. 
+    My focus is on building efficient, user-focused applications that make everyday life simpler. 
+    I look forward to collaborating on impactful projects that bring real value.
+  </p>
+  <a class="btn cv-btn" href="{{ resume_path }}" target="_blank">Download CV</a>
+</section>
+
+
+
+<hr class="sep">
+
+<section id="education" class="container">
+  <center><h2 class="section-title">EDUCATION</h2></center><br>
+  <div class="mini-card">
+    <div class="period">2025 - 2027</div>
+    <div class="role">RAJAGIRI COLLEGE OF SOCIAL SCIENCES </div>
+    <div class="muted">Master of Computer Application</div>
+  </div><br><br>
+  <div class="mini-card">
+    <div class="period">2022 - 2025</div>
+    <div class="role">SWAMY SASWATHIKANANDA COLLEGE, POOTHOTTA</div>
+    <div class="muted">Bachelor of Computer Application</div>
+  </div><br><br>
+  <div class="mini-card">
+    <div class="period">2021 - 2022</div>
+    <div class="role">KMJ PUBLIC SCHOOL</div>
+    <div class="muted">CLASS XII(PCM)</div>
+  </div><br><br>
+</section>
+
+<hr class="sep">
+
+<div class="skills-grid">
+
+  <div class="skill-item" data-name="HTML" data-desc="HTML structures the content of websites using semantic markup.">
+    <img src="{{ url_for('static', filename='media/html.webp') }}">
+  </div>
+
+  <div class="skill-item" data-name="CSS" data-desc="CSS styles and layouts web pages to make them visually appealing.">
+    <img src="{{ url_for('static', filename='media/css.png') }}">
+  </div>
+
+  <div class="skill-item" data-name="JavaScript" data-desc="JavaScript adds interactivity and dynamic behaviour to web applications.">
+    <img src="{{ url_for('static', filename='media/js.webp') }}">
+  </div>
+
+  <div class="skill-item" data-name="Python" data-desc="Python is a versatile language used for backend, AI, automation & more.">
+    <img src="{{ url_for('static', filename='media/py.png') }}">
+  </div>
+
+  <div class="skill-item" data-name="C++" data-desc="“C++ is a powerful, high-performance programming language widely used in system software, game engines, and competitive programming.”">
+      <img src="{{ url_for('static', filename='media/cpp.png') }}" alt="C++">
+    </div>
+
+    <div class="skill-item" data-name="SQL">
+      <img src="{{ url_for('static', filename='media/sql.png') }}" alt="SQL">
+    </div>
+
+    <div class="skill-item" data-name="Java">
+      <img src="{{ url_for('static', filename='media/java.png') }}" alt="Java">
+    </div>
+  </div>
+
+</div>
+<!-- Skill Popup Modal -->
+<div id="skill-modal">
+  <div class="modal-content">
+    <img id="modal-img" src="">
+    <h2 id="modal-title"></h2>
+    <p id="modal-desc"></p>
+  </div>
+</div>
+
+ 
+
+
+    <hr class="sep">
+
+    <!-- PROJECTS -->
+    <section id="projects" class="container">
+      <h3 class="section-title">selected projects</h3>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h4>Wehire — Job Portal</h4>
+          <p class="muted">Full stack job portal with resume builder and apply flows. (PHP / MySQL)</p>
+        </div>
+        <div class="project-card">
+          <h4>ReadyGo — Cab Booking</h4>
+          <p class="muted">Real-time location tracking and multiple ride types. (Django / Python)</p>
+        </div>
+       
+      </div>
+    </section>
+
+    <hr class="sep">
+
+    <!-- CONTACT -->
+    <section id="contact" class="container contact-section">
+      <div class="contact-left">
+        <h3 class="section-title">contact</h3>
+        <p class="muted">Ready to work together or want to see more? Send a quick message.</p>
+
+        <ul class="contact-list">
+          <li><strong>Email:</strong> farsansuneer@gmail.com</li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/fars-a" target="_blank">github.com/fars-a</a></li>
+        </ul>
+      </div>
+
+      <div class="contact-right">
+        {% if contact_success %}
+          <div class="success">Thanks — your message was sent .</div>
+        {% endif %}
+        <form method="POST" action="/contact" class="contact-form">
+          <input name="name" placeholder="Your name" required>
+          <input name="email" type="email" placeholder="Your email" required>
+          <textarea name="message" rows="5" placeholder="Tell me about the project..." required></textarea>
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Send message</button>
+            <a class="btn ghost" href="{{ resume_path }}" target="_blank">Download Resume</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2025 farsan suneer</div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
