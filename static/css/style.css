@@ -62,7 +62,6 @@ body, p, a, h1, h2, h3, h4, span, strong {
   object-fit: cover;
 }
 
-
 /* Name and subtitle */
 .display-name{font-size:40px; margin:0; text-transform:lowercase; letter-spacing:0.6px}
 .display-name strong{font-weight:800}
@@ -226,75 +225,233 @@ body, p, a, h1, h2, h3, h4, span, strong {
   transform: translateY(-3px);
 }
 /* Popup Background */
-#skill-modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(6px);
-  z-index: 1000;
-}
-
-/* Popup Content Box */
-#skill-modal .modal-content {
-  background: var(--soft);
-  padding: 30px;
-  border-radius: 18px;
+/* ===== SKILLS SECTION ===== */
+.skills-section {
+  padding: 80px 0;
   text-align: center;
-  max-width: 420px;
-  box-shadow: 0 0 25px rgba(255, 106, 39, 0.7);
-  animation: zoomIn 0.3s ease;
 }
 
-#skill-modal img {
-  width: 110px;
-  height: 110px;
-  margin-bottom: 12px;
+.skills-title {
+  color: var(--accent);
+  font-size: 26px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
 }
 
-#skill-modal h2 {
+/* Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 28px;
+  justify-items: center;
+}
+
+/* Skill Card */
+.skill-item {
+  width: 150px;
+  height: 180px;
+  border-radius: 20px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 0 rgba(255,106,39,0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s ease;
+  position: relative;
+  cursor: pointer;
+  overflow: visible;  
+}
+
+/* Floating Glow Ring */
+.skill-item::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: radial-gradient(circle,
+    rgba(255,106,39,0.6),
+    transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Icon */
+.skill-item img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  z-index: 1;
+  transition: transform 0.35s ease;
+}
+
+/* Hover Effects */
+.skill-item:hover {
+  transform: translateY(-10px) rotateX(8deg) rotateY(-8deg);
+  box-shadow: 0 0 30px rgba(255,106,39,0.55);
+}
+
+.skill-item:hover::before {
+  opacity: 1;
+}
+
+.skill-item:hover img {
+  transform: scale(1.15);
+}
+
+/* ===== SKILL TOOLTIP POPUP ===== */
+.skill-item .skill-tooltip {
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  width: 220px;
+  background: var(--soft);
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255,106,39,0.6);
+  border: 1px solid rgba(255,106,39,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+  z-index: 10;
+}
+
+/* Title */
+.skill-tooltip h4 {
+  margin: 0;
+  font-size: 15px;
   color: var(--accent);
   font-weight: 800;
-  margin: 10px 0;
-  font-size: 24px;
 }
 
-#skill-modal p {
+/* Description */
+.skill-tooltip p {
+  margin: 6px 0 0;
+  font-size: 13px;
   color: #eee;
-  font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-/* Popup Animation */
-@keyframes zoomIn {
-  0% { transform: scale(0.4); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-/* Skill Icons Fixed Size */
-.skill-item img {
-  width: 150px;       /* icon width */
-  height: 200px;      /* icon height */
-  padding: 6px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+/* Arrow */
+.skill-item .skill-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: var(--soft) transparent transparent transparent;
 }
 
-/* Hover Glow Effect */
-.skill-item:hover img {
-  transform: scale(1.12);
-  box-shadow: 0 0 14px rgba(255, 106, 39, 0.6);
-  cursor: pointer;
+/* Show on Hover */
+.skill-item:hover .skill-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
 }
-
-/* Grid Alignment Fix */
-.skills-grid, .tags {
+/* ============================
+   SKILLS SECTION
+============================ */
+.skills-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
+  gap: 24px;
   justify-content: center;
+  margin-top: 30px;
 }
+
+
+.skill-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================
+   SKILL ICON
+============================ */
+.skill-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ============================
+   TOOLTIP POPUP
+============================ */
+.skill-tooltip {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+  width: 220px;
+  background: #1f2933;
+  color: #ffffff;
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 100;
+  text-align: center;
+}
+
+/* Tooltip arrow */
+.skill-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #1f2933 transparent transparent transparent;
+}
+
+/* Show tooltip on hover */
+.skill-item:hover .skill-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Tooltip content */
+.skill-tooltip h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.skill-tooltip p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #d1d5db;
+}
+
+/* ============================
+   DISABLE TOOLTIP ON MOBILE
+============================ */
+@media (hover: none) {
+  .skill-tooltip {
+    display: none;
+  }
+}
+
+/* ============================
+   MODAL POPUP
+============================ */
+
+
+
+
+
+
+
